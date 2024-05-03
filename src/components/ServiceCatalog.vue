@@ -1,25 +1,25 @@
 <template>
   <div class="service-catalog">
     <h1>Service Catalog</h1>
-    <input
-      v-model="searchQuery"
-      class="search-input"
-      data-testid="search-input"
-      placeholder="Search services"
-    >
+    <form @submit.prevent="handleSubmit">
+      <input
+        v-model="searchQuery"
+        class="search-input"
+        data-testid="search-input"
+        placeholder="Search services"
+      >
+    </form>
     <ul
-      v-if="services.length"
+      v-if="filteredServices.length && !loading && !error"
       class="catalog"
     >
       <li
-        v-for="service in services"
+        v-for="service in filteredServices"
         :key="service.id"
         class="service"
       >
         <div>
-          <p>
-            {{ service.name }}
-          </p>
+          <p>{{ service.name }}</p>
           <p>{{ service.description }}</p>
         </div>
       </li>
@@ -33,26 +33,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import useServices from '@/composables/useServices'
+<script setup lang="ts">
+import { ref } from 'vue'
+import useFilteredServices from '@/composables/useFilteredServices'
 
-export default defineComponent({
-  name: 'ServiceCatalog',
-  setup() {
-    // Import services from the composable
-    const { services, loading } = useServices()
+// Initialize the searchQuery ref
+const searchQuery = ref('')
 
-    // Set the search string to a Vue ref
-    const searchQuery = ref('')
+const { filteredServices, loading, error, filterServices } = useFilteredServices()
 
-    return {
-      services,
-      loading,
-      searchQuery,
-    }
-  },
-})
+const handleSubmit = async () => {
+  await filterServices(searchQuery.value)
+}
 </script>
 
 <style lang="scss" scoped>

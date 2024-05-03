@@ -1,52 +1,55 @@
-import express from 'express'
 import type { Request, Response } from 'express'
+import express from 'express'
 import bodyParser from 'body-parser'
+import type { DataResponse, Service } from './data'
 import response from './data'
+import cors from 'cors'
+import dotenv from 'dotenv'
 
 const app = express()
+dotenv.config()
+
+const corsOptions: cors.CorsOptions = {
+  origin: process.env.VITE_APP_FRONT_URL,
+}
+
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: false,
-}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Data route
 app.route('/api/:entity').get((req: Request, res: Response) => {
-  const { entity } = req.params
-  const data: Record<string, any>[] = response[entity]
+  try {
+    const { entity } = req.params
+    const data: DataResponse = response
+    const entityData: Service[] | undefined = data[entity]
 
-  if (!data) {
-    return res.status(404).send('Not found')
-  }
+    if (!entityData) {
+      return res.status(404).send('Not found')
+    }
 
-  // Get the request query string object
-  const query: string = String(req.query.q || '').trim().toLowerCase()
+    const query: string = String(req.query.q || '').trim().toLowerCase()
 
-  // Determine if the property includes the filter string
-  const itemContainsFilter = (str: string) => (String(str || '').toLowerCase().includes(query) || false)
-
-  let filteredData: Record<string, any>[]
-
-  if (!query) {
-    filteredData = data
-  } else {
-    // Filter the response data if a filter query string is present
-    filteredData = data.filter((responseData: Record<string, any>) => {
-      for (const property in responseData) {
-        // Only allow searching when the object property is typeof `string`
-        // If string is found, return true
-        if (responseData[property] && typeof responseData[property] === 'string' && itemContainsFilter(responseData[property])) {
+    const filteredData: Service[] = entityData.filter((service: Service) => {
+      for (const key in service) {
+        if (service[key] && typeof service[key] === 'string' &&
+          String(service[key]).toLowerCase().includes(query)
+        ) {
           return true
         }
       }
       return false
     })
+    return res.status(200).send(filteredData)
+  } catch (err) {
+    console.error(err)
+    return res.status(500).send('Internal Server Error')
   }
-  return res.status(200).send(filteredData)
 })
 
-// Catch-all
-app.route('*').get((req: Request, res: Response) => {
+// Catch-all for 404 responses
+app.use((req: Request, res: Response) => {
   res.status(404).send('Not found')
 })
 

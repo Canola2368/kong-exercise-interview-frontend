@@ -1,39 +1,29 @@
 import { ref, onBeforeMount } from 'vue'
 import axios from 'axios'
+import type { Service } from 'server/data'
 
-// This composable is a simplified example for the exercise **and could likely be improved**.
-// Feel free to leave as-is, modify, or remove this file (and any others) as desired.
-// https://vuejs.org/guide/reusability/composables.html
+export default function useServices() {
+  const services = ref<Service[]>([])
+  const loading = ref(false)
+  const error = ref(false)
 
-export default function useServices(): any {
-  const services = ref<any[]>([])
-  const loading = ref<any>(false)
-  const error = ref<any>(false)
-
-  const getServices = async (): Promise<any> => {
+  const getServices = async () => {
     try {
-      // Initialize loading state
       loading.value = true
-
-      // Fetch data from the API
-      const { data } = await axios.get('/api/services')
-
-      // Store data in Vue ref
+      const { data } = await axios.get(import.meta.env.VITE_APP_API_URL + '/api/services') // Using environment variable for API URL
       services.value = data
-    } catch (err: any) {
+    } catch (err) {
       error.value = true
+      console.error(err) // Output error for debugging
     } finally {
-      // Reset loading state
       loading.value = false
     }
   }
 
-  onBeforeMount(async (): Promise<void> => {
-    // Fetch services from the API
+  onBeforeMount(async () => {
     await getServices()
   })
 
-  // Return stateful data
   return {
     services,
     loading,
