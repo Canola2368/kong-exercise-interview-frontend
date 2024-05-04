@@ -1,0 +1,11 @@
+$small-screen: 640px;
+$medium-screen: 768px;
+$large-screen: 1024px;
+$extra-large-screen: 1200px;
+$double-extra-large-screen: 1536px;
+
+$breakpoint-sm: $small-screen;
+$breakpoint-md: $medium-screen;
+$breakpoint-lg: $large-screen;
+$breakpoint-xl: $extra-large-screen;
+$breakpoint-xl: $double-extra-large-screen;

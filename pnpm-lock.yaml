@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@kong/icons':
+        specifier: ^1.9.1
+        version: 1.9.1(vue@3.4.15(typescript@5.3.3))
       axios:
         specifier: ^1.6.7
         version: 1.6.7
@@ -45,6 +48,9 @@ importers:
       '@faker-js/faker':
         specifier: ^8.4.0
         version: 8.4.0
+      '@kong/design-tokens':
+        specifier: ^1.12.11
+        version: 1.12.11
       '@rushstack/eslint-patch':
         specifier: ^1.3.3
         version: 1.7.2
@@ -776,6 +782,15 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.22':
     resolution: {integrity: sha512-Wf963MzWtA2sjrNt+g18IAln9lKnlRp+K2eH4jjIoF1wYeq3aMREpG09xhlhdzS0EjwU7qmUJYangWa+151vZw==}
+
+  '@kong/design-tokens@1.12.11':
+    resolution: {integrity: sha512-+zgR6Ti4Joj85yD/KJzE3ja6Y0khxh9vapNnkOyGtLAUnCLstkH7WfLLhM22Qi7K5q/J2R1kWuR3X+XMp6U2mQ==}
+
+  '@kong/icons@1.9.1':
+    resolution: {integrity: sha512-8V21s7OEXcGAWDfPlcidjLlvAemz1KxgkpNSCWC9BCMGnmYRV/1hF7hzC0Dbjz6Q5uP3jnukI+e2bkKKrxANMQ==}
+    engines: {node: '>=18.17.0'}
+    peerDependencies:
+      vue: '>= 3.3.4 < 4'
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -4473,6 +4488,12 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@kong/design-tokens@1.12.11': {}
+
+  '@kong/icons@1.9.1(vue@3.4.15(typescript@5.3.3))':
+    dependencies:
+      vue: 3.4.15(typescript@5.3.3)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

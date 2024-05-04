@@ -27,6 +27,7 @@
     },
   },
   "include": [
+    "types/**/*.ts",
     "src/**/*.ts",
     "src/**/*.vue"
   ],

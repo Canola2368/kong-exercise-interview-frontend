@@ -1,18 +1,31 @@
 <template>
-  <div class="service-catalog">
-    <h1>Service Catalog</h1>
-    <form @submit.prevent="handleSubmit">
-      <input
-        v-model="searchQuery"
-        class="search-input"
-        data-testid="search-input"
-        placeholder="Search services"
-      >
-    </form>
-    <ul
-      v-if="filteredServices.length && !loading && !error"
-      class="catalog"
-    >
+  <section class="container-centered">
+    <header>
+      <!-- todo: add component for left section -->
+      <div class="">
+        <h1>Service Catalog</h1>
+        <p>Organize services, manage and track versioning and API service documentation. Learn more</p>
+      </div>
+
+      <!-- todo: add component for right section -->
+      <div class="">
+        <form @submit.prevent="handleSubmit">
+          <input
+            v-model="searchQuery"
+            class="search-input"
+            data-testid="search-input"
+            placeholder="Search services"
+          >
+        </form>
+        <button>service package</button>
+      </div>
+    </header>
+
+    <!-- todo: add component for list render and single article -->
+    <span v-if="loading">LOADINGGGGGGGGGGGGGGG</span>
+
+    <!-- todo add redering modes for exceptions -->
+    <ul v-if="filteredServices.length > 0 && !loading && !error">
       <li
         v-for="service in filteredServices"
         :key="service.id"
@@ -30,11 +43,11 @@
     >
       No services
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import useFilteredServices from '@/composables/useFilteredServices'
 
 // Initialize the searchQuery ref
@@ -45,40 +58,33 @@ const { filteredServices, loading, error, filterServices } = useFilteredServices
 const handleSubmit = async () => {
   await filterServices(searchQuery.value)
 }
+
+watch(filteredServices, () => { console.log('filtered services: ', filteredServices.value) })
 </script>
 
 <style lang="scss" scoped>
-.service-catalog {
-  margin: 2rem auto;
-  max-width: 1366px;
-  padding: 0 20px;
-}
-
-.catalog {
+header {
   display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 20px 0 0 0;
+  justify-content: space-between;
 }
 
-.service {
-  border: 1px solid #999;
-  border-radius: 10px;
-  margin: 6px;
-  padding: 8px 16px;
-  width: 200px;
-
-  p:first-of-type {
-    color: #333;
-    font-weight: 700;
-  }
-
-  p {
-    color: #666;
-  }
+section {
+  background-color: $kui-color-background-disabled;
+  padding: 2.5rem;
 }
 
-input {
-  padding: 8px 4px;
+ul {
+  width: 100%;
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 2.5rem;
+  background-color: $kui-color-background-danger;
+
+  li {
+    background-color: $kui-color-background;
+    padding: $kui-space-80;
+    list-style-type: none;
+  }
 }
 </style>

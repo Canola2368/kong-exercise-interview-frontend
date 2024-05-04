@@ -1,42 +1,6 @@
 import type { SexType } from '@faker-js/faker'
 import { faker } from '@faker-js/faker'
-
-interface Developer {
-  id: string;
-  name: string;
-  email: string;
-  avatar: string;
-}
-
-interface ServiceVersion {
-  id: string;
-  name: string;
-  description: string;
-  developer?: Developer;
-  updated_at: Date;
-}
-
-interface ServiceMetrics {
-  latency: number;
-  uptime: number;
-  requests: number;
-  errors: number;
-}
-
-export interface Service {
-  id: string;
-  name: string;
-  description: string;
-  type: string;
-  published: boolean;
-  configured: boolean;
-  versions: ServiceVersion[];
-  metrics?: ServiceMetrics;
-}
-
-export interface DataResponse {
-  services: Service[];
-}
+import type { DataResponse, Developer } from '../types'
 
 const developerCount: number = 10
 

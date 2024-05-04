@@ -1,0 +1,62 @@
+@use "variables" as *;
+
+@mixin container-styles($max-width: 100%) {
+    width: 100%;
+    max-width: $max-width;
+
+    @include media-sm {
+        max-width: $small-screen;
+    }
+
+    @include media-md {
+        max-width: $medium-screen;
+    }
+
+    @include media-lg {
+        max-width: $large-screen;
+    }
+
+    @include media-xl {
+        max-width: $extra-large-screen;
+    }
+
+    @include media-xxl {
+        max-width: $double-extra-large-screen;
+    }
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin media-sm {
+    @media (max-width: $breakpoint-sm) {
+        @content;
+    }
+}
+
+@mixin media-md {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+@mixin media-lg {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+        @content;
+    }
+}
+
+@mixin media-xl {
+    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+@mixin media-xxl {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}

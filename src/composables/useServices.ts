@@ -1,6 +1,6 @@
 import { ref, onBeforeMount } from 'vue'
 import axios from 'axios'
-import type { Service } from 'server/data'
+import type { Service } from 'types'
 
 export default function useServices() {
   const services = ref<Service[]>([])

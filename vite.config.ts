@@ -18,7 +18,13 @@ export default defineConfig(({ mode }) => {
       },
     },
     css: {
-      devSourcemap: true,
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use '@kong/design-tokens/tokens/scss/variables' as *;  
+          `,
+        },
+      },
     },
     server: {
       open: true,

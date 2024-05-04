@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import type { AxiosError } from 'axios'
 import axios, { isAxiosError } from 'axios'
-import type { Service } from 'server/data'
+import type { Service } from 'types'
 
 export default function useFilteredServices() {
   const filteredServices = ref<Service[]>([])
