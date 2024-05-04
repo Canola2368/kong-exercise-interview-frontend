@@ -12,7 +12,7 @@
       <div class="mobile-hidden">
         <NavButton
           label="organization"
-          link="organization"
+          link="/"
         >
           <template #icon>
             <img
@@ -23,7 +23,7 @@
         </NavButton>
         <NavButton
           label="settings"
-          link="settings"
+          link="/"
         >
           <template #icon>
             <img
@@ -32,7 +32,10 @@
             >
           </template>
         </NavButton>
-        <AccountButton name="katherine ellis" />
+        <AccountButton
+          link="/"
+          name="katherine ellis"
+        />
       </div>
       <div class="desktop-hidden">
         <ToggleNavigationButton
@@ -48,7 +51,7 @@
       <li>
         <NavButton
           label="organization"
-          link="organization"
+          link="/"
         >
           <template #icon>
             <img
@@ -61,7 +64,7 @@
       <li>
         <NavButton
           label="settings"
-          link="settings"
+          link="/"
         >
           <template #icon>
             <img
@@ -72,7 +75,10 @@
         </NavButton>
       </li>
       <li>
-        <AccountButton name="katherine ellis" />
+        <AccountButton
+          link="/"
+          name="katherine ellis"
+        />
       </li>
     </ul>
   </nav>
@@ -89,21 +95,22 @@ const isPanelOpen = ref(false)
 
 <style lang="scss" scoped>
 nav {
-  position: fixed;
-  z-index: 10;
-  inset: 0;
+  background: linear-gradient(180deg, $navigation-darkest-background 0%, $navigation-dark-background 100%);
   bottom: auto;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
 
-  background: linear-gradient(180deg, #09224F 0%, #073382 100%);
-
-  @include media-lg {
+  @include breakpoint('lg') {
     position: relative;
   }
 
   >section {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 
   .logo {
@@ -112,15 +119,15 @@ nav {
 }
 
 ul {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  row-gap: 0.5rem;
-  padding: 1rem;
+  padding: spacing(4);
+  row-gap: spacing(2);
 
   li {
-    padding: 0;
     list-style-type: none;
+    padding: spacing(0);
   }
 }
 </style>

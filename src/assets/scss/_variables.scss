@@ -4,8 +4,79 @@ $large-screen: 1024px;
 $extra-large-screen: 1200px;
 $double-extra-large-screen: 1536px;
 
-$breakpoint-sm: $small-screen;
-$breakpoint-md: $medium-screen;
-$breakpoint-lg: $large-screen;
-$breakpoint-xl: $extra-large-screen;
-$breakpoint-xl: $double-extra-large-screen;
+$main-font-family: "Inter", Roboto, Helvetica, sans-serif;
+
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$accent-color: #07a88d;
+
+$text-color: #707888;
+$text-color-reversed: #ffffff;
+$heading-color: #3c4557;
+
+$input-border-color: #e7e7ec;
+$input-border-focus-color: #b8b6c3;
+$input-placeholder-color: #6f7787;
+$input-text-color: #707888;
+$input-icon-color: #b9babb;
+
+$main-background-color: #f8f8fa;
+$white-background-color: #ffffff;
+
+$success-color: #42d782;
+$warning-color: #fabe5f;
+$error-color: #dc3545;
+
+$navigation-icon-background: #0a7fae;
+$navigation-darkest-background: #09224f;
+$navigation-dark-background: #073382;
+$navigation-mobile-button-background: #072863;
+
+$palette-blue-100: #f2f6fe;
+$palette-blue-200: #bdd3f9;
+$palette-blue-300: #5888db;
+$palette-blue-500: #1456cb;
+$palette-blue-600: #1155cb;
+
+$breakpoints: (
+  "sm": $small-screen,
+  "md": $medium-screen,
+  "lg": $large-screen,
+  "xl": $extra-large-screen,
+  "xxl": $double-extra-large-screen
+);
+
+$font-size-2xs: 0.5rem;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+
+$line-height-2xs: 0.5rem;
+$line-height-xs: 1rem;
+$line-height-sm: 1.25rem;
+$line-height-base: 1.5rem;
+$line-height-lg: 1.75rem;
+$line-height-xl: 2rem;
+$line-height-2xl: 2.25rem;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$border-radius-none: 0;
+$border-radius-sm: 4px;
+$border-radius-base: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-rounded-button: 100px;
+$border-radius-round: 50%;
+
+$icon-size-sm: 1.5rem;
+$icon-size-base: 1.875rem;
+
+$initial-spacing-size: 0rem;
+$spacing-increment: 0.25rem;

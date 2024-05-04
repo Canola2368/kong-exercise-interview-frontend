@@ -5,7 +5,7 @@
     column-gap: 0.5rem;
     display: flex;
     
-    @include media-lg {
+    @include breakpoint('lg') {
         display: none;
     }
 }
@@ -13,7 +13,7 @@
 .mobile-hidden {
     display: none;
 
-    @include media-lg {
+    @include breakpoint('lg') {
         align-items: center;
         column-gap: 0.5rem;
         display: flex;

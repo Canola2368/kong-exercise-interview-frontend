@@ -22,37 +22,37 @@ defineProps<{
 <style lang="scss" scoped>
 a {
   align-items: center;
-  color: $kui-color-text-inverse;
-  column-gap: 0.75rem;
+  color: $text-color-reversed;
+  column-gap: spacing(3);
   cursor: pointer;
   display: flex;
-  font-size: $kui-font-size-30;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
   justify-content: center;
-  padding: 0.75rem 0.5rem;
-
-  font-weight: $kui-font-weight-semibold;
+  padding: spacing(3) spacing(2);
+  text-decoration: none;
   text-transform: capitalize;
 
-  @include media-lg {
-    background-color: #072863;
-    margin-left: 1rem;
-    padding: 1.25rem;
-    column-gap: 1rem;
+  @include breakpoint('lg') {
+    background-color: $navigation-mobile-button-background;
+    column-gap: spacing(4);
+    margin-left: spacing(4);
+    padding: spacing(5);
   }
 
   >div {
-    display: flex;
     align-items: center;
+    display: flex;
+    height: $icon-size-sm;
     justify-content: center;
-    height: $kui-icon-size-40;
-    width: $kui-icon-size-40;
+    width: $icon-size-sm;
 
-    @include media-lg {
-      background-color: #0A7FAE;
-      border-radius: $kui-border-radius-circle;
-      height: $kui-icon-size-60;
-      width: $kui-icon-size-60;
-      padding: 0.5rem;
+    @include breakpoint('lg') {
+      background-color: $navigation-icon-background;
+      border-radius: $border-radius-round;
+      height: $icon-size-base;
+      padding: spacing(2);
+      width: $icon-size-base;
     }
   }
 
@@ -64,8 +64,8 @@ a {
       opacity: 1;
     }
 
-    @include media-lg {
-      font-weight: $kui-font-weight-medium;
+    @include breakpoint('lg') {
+      font-weight: $font-weight-medium;
     }
   }
 }

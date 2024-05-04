@@ -20,12 +20,12 @@ defineProps<{
 a {
   align-items: center;
   background-color: transparent;
-  color: $kui-color-text-inverse;
-  column-gap: 0.75rem;
+  color: $text-color-reversed;
+  column-gap: spacing(3);
   display: flex;
-  font-size: $kui-font-size-30;
+  font-size: $font-size-sm;
   opacity: 0.8;
-  padding: 0.75rem 0.5rem;
+  padding: spacing(3) spacing(2);
   text-decoration: none;
   text-transform: capitalize;
   transition: opacity 0.1s ease-in-out;
@@ -35,12 +35,12 @@ a {
   }
 
   div {
-    height: $kui-icon-size-40;
-    width: $kui-icon-size-40;
+    height: $icon-size-sm;
+    width: $icon-size-sm;
   }
 
   span {
-    font-weight: $kui-font-weight-semibold;
+    font-weight: $font-weight-semibold;
   }
 }
 </style>

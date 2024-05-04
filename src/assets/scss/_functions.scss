@@ -1,0 +1,24 @@
+@use "variables" as *;
+
+@use "sass:map";
+@use "sass:math";
+
+$spacing-sizes: ();
+
+@for $i from 0 through 64 {
+    $value: $initial-spacing-size + ($i * math.div($spacing-increment, 2));
+    $key: math.div($i, 2);
+
+    $spacing-sizes: map.merge(
+        $spacing-sizes,
+        (
+            $key: $value
+        )
+    );
+}
+
+@function spacing($key) {
+    @return map.get($spacing-sizes, $key);
+}
+
+// @debug $spacing-sizes;

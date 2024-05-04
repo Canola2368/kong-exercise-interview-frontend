@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ServiceCatalog from '@/components/ServiceCatalog.vue'
+import ServiceCatalog from '@/components/list/ServiceCatalog.vue'
 import NavigationBar from '@/components/navigation/NavigationBar.vue'
 
 export default defineComponent({
@@ -19,13 +19,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style lang="scss" scoped>
-main {
-  margin-top: 3rem;
-
-  @include media-lg {
-    margin-top: 0;
-  }
-}
-</style>

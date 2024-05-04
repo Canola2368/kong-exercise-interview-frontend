@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
           additionalData: `
             @use './src/assets/scss/variables' as *;  
             @use './src/assets/scss/mixins' as *;  
-            @use '@kong/design-tokens/tokens/scss/variables' as *;  
+            @use './src/assets/scss/functions' as *;  
           `,
         },
       },

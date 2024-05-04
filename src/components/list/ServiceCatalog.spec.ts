@@ -1,7 +1,7 @@
 import { vi, describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ServiceCatalog from './ServiceCatalog.vue'
-import servicesData from '../../mocks/services'
+import servicesData from '../../../mocks/services'
 
 // Mock the axios module for fetching API services
 const mockedResponses = new Map()

@@ -1,7 +1,11 @@
 <template>
   <button @click="$emit('isOpenChange')">
-    <span v-if="isOpen"><CloseIcon /></span>
-    <span v-else><MenuIcon /></span>
+    <span v-if="isOpen">
+      <CloseIcon />
+    </span>
+    <span v-else>
+      <MenuIcon />
+    </span>
   </button>
 </template>
 
@@ -16,12 +20,15 @@ defineProps<{
 
 <style lang="scss" scoped>
 button {
-    appearance: none;
-    background-color: #051d47;
-    border: 1px solid #072863;
-    border-radius: 4px;
-    margin: 0.75rem 0;
-    color: white;
-    padding: 0.5rem;
+  align-items: center;
+  appearance: none;
+  background-color: $navigation-darkest-background;
+  border: 1px solid $navigation-mobile-button-background;
+  border-radius: $border-radius-sm;
+  color: $text-color-reversed;
+  display: inline-flex;
+  justify-content: center;
+  margin: spacing(3) spacing(0);
+  padding: spacing(2);
 }
 </style>
