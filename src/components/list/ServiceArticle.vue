@@ -7,12 +7,21 @@
     <h3>{{ service.name }}</h3>
     <p>{{ service.description }}</p>
   </div>
+  <footer>
+    <ServiceData
+      v-if="service.metrics"
+      :metrics="service.metrics"
+    />
+    <ServiceSingleDataUnconfigured v-else />
+  </footer>
 </template>
 
 <script setup lang="ts">
 import type { Service } from 'types'
 import ServiceStatus from '../ui/ServiceStatus.vue'
 import ServiceBadge from '../ui/ServiceBadge.vue'
+import ServiceData from '../ui/ServiceData.vue'
+import ServiceSingleDataUnconfigured from '../ui/ServiceSingleDataUnconfigured.vue'
 
 defineProps<{
   service: Service
@@ -30,7 +39,18 @@ header {
   justify-content: space-between;
 }
 
+footer {
+  margin-top: auto;
+
+  >span {
+    color: $text-color;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+  }
+}
+
 div {
+  margin-bottom: spacing(4);
   margin-top: spacing(2.5);
 
   h3 {

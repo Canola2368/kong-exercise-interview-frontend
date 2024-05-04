@@ -1,5 +1,5 @@
 <template>
-  <div class="container-centered">
+  <div class="main">
     <header>
       <div>
         <h1>Service Hub</h1>
@@ -48,7 +48,7 @@ watch(filteredServices, () => { console.log('filtered services: ', filteredServi
 </script>
 
 <style lang="scss" scoped>
-div.container-centered {
+div.main {
   margin-top: spacing(30);
 
   >div {

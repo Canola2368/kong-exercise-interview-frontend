@@ -1,4 +1,9 @@
 import { z } from 'zod'
+import type { HTMLAttributes } from 'vue'
+
+export interface SkeletonProps {
+  class?: HTMLAttributes['class']
+}
 
 export enum ServiceStatusEnum {
   Published = 'published',

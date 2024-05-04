@@ -1,13 +1,21 @@
 <template>
-  <span v-if="length>0">
+  <span
+    :class="visibilityHiddenClass"
+  >
     {{ length }} versions
   </span>
 </template>
 
 <script lang="ts" setup>
-defineProps<{
+import { computed } from 'vue'
+
+const props = defineProps<{
   length: number
 }>()
+
+const visibilityHiddenClass = computed(() => ({
+  hidden: props.length === 0,
+}))
 </script>
 
 <style lang="scss" scoped>
@@ -20,5 +28,9 @@ span {
   padding: spacing(2) spacing(4);
   white-space: nowrap;
   width: fit-content;
+
+  &.hidden {
+    visibility: hidden;
+  }
 }
 </style>
