@@ -1,5 +1,7 @@
 @use "variables" as *;
 @use "mixins" as *;
+@use "components" as *;
+@use "utilities" as *;
 
 *,
 *::before,
@@ -17,10 +19,10 @@ body {
 }
 
 body {
-    line-height: 1.5;
     background-color: #F8F8FA;
-    margin: 0;
     -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    margin: 0;
 }
 
 img,
@@ -54,11 +56,3 @@ h6 {
     isolation: isolate;
 }
 
-.container {
-    @include container-styles();
-}
-
-.container-centered {
-    margin: 0 auto;
-    @include container-styles();
-}

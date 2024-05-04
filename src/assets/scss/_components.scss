@@ -1,0 +1,11 @@
+@use "mixins" as *;
+
+.container {
+    @include container-styles();
+}
+
+.container-centered {
+    margin: 0 auto;
+    @include container-styles();
+}
+

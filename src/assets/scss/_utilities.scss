@@ -1,0 +1,21 @@
+@use "mixins" as *;
+
+.desktop-hidden {
+    align-items: center;
+    column-gap: 0.5rem;
+    display: flex;
+    
+    @include media-lg {
+        display: none;
+    }
+}
+
+.mobile-hidden {
+    display: none;
+
+    @include media-lg {
+        align-items: center;
+        column-gap: 0.5rem;
+        display: flex;
+    }
+}

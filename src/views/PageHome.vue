@@ -19,3 +19,13 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+main {
+  margin-top: 3rem;
+
+  @include media-lg {
+    margin-top: 0;
+  }
+}
+</style>

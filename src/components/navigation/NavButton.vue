@@ -18,25 +18,25 @@ defineProps<{
 
 <style lang="scss" scoped>
 a {
-  display: flex;
   align-items: center;
   background-color: transparent;
   color: $kui-color-text-inverse;
-  font-size: $kui-font-size-30;
-  transition: opacity 0.1s ease-in-out;
   column-gap: 0.75rem;
+  display: flex;
+  font-size: $kui-font-size-30;
   opacity: 0.8;
-  text-decoration: none;
   padding: 0.75rem 0.5rem;
+  text-decoration: none;
   text-transform: capitalize;
+  transition: opacity 0.1s ease-in-out;
 
   &:hover {
     opacity: 1;
   }
 
   div {
-    width: $kui-icon-size-40;
     height: $kui-icon-size-40;
+    width: $kui-icon-size-40;
   }
 
   span {

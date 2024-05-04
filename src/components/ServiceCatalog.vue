@@ -70,21 +70,21 @@ header {
 
 section {
   background-color: $kui-color-background-disabled;
-  padding: 2.5rem;
+  padding: 2.5rem 0;
 }
 
 ul {
-  width: 100%;
-  display: grid;
-  padding: 0;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 2.5rem;
   background-color: $kui-color-background-danger;
+  display: grid;
+  grid-gap: 2.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0;
+  width: 100%;
 
   li {
     background-color: $kui-color-background;
-    padding: $kui-space-80;
     list-style-type: none;
+    padding: $kui-space-80;
   }
 }
 </style>

@@ -21,6 +21,8 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
+            @use './src/assets/scss/variables' as *;  
+            @use './src/assets/scss/mixins' as *;  
             @use '@kong/design-tokens/tokens/scss/variables' as *;  
           `,
         },
