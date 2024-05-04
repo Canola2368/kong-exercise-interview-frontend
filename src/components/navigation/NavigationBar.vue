@@ -122,8 +122,8 @@ ul {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  gap: spacing(2);
   padding: spacing(4);
-  row-gap: spacing(2);
 
   li {
     list-style-type: none;

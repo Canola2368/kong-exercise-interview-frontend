@@ -23,11 +23,11 @@ defineProps<{
 a {
   align-items: center;
   color: $text-color-reversed;
-  column-gap: spacing(3);
   cursor: pointer;
   display: flex;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
+  gap: spacing(3);
   justify-content: center;
   padding: spacing(3) spacing(2);
   text-decoration: none;
@@ -35,7 +35,7 @@ a {
 
   @include breakpoint('lg') {
     background-color: $navigation-mobile-button-background;
-    column-gap: spacing(4);
+    gap: spacing(4);
     margin-left: spacing(4);
     padding: spacing(5);
   }

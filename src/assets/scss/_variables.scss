@@ -23,9 +23,12 @@ $input-icon-color: #b9babb;
 $main-background-color: #f8f8fa;
 $white-background-color: #ffffff;
 
+$skeleton-background-color: #eaeaef;
+
 $success-color: #42d782;
 $warning-color: #fabe5f;
 $error-color: #dc3545;
+$inactive-color: #ADB6C8;
 
 $navigation-icon-background: #0a7fae;
 $navigation-darkest-background: #09224f;
@@ -68,6 +71,7 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $border-radius-none: 0;
+$border-radius-xs: 2px;
 $border-radius-sm: 4px;
 $border-radius-base: 8px;
 $border-radius-lg: 12px;
@@ -75,6 +79,7 @@ $border-radius-xl: 16px;
 $border-radius-rounded-button: 100px;
 $border-radius-round: 50%;
 
+$icon-size-xs: 1.25rem;
 $icon-size-sm: 1.5rem;
 $icon-size-base: 1.875rem;
 

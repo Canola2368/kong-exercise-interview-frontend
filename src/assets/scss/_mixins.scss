@@ -22,7 +22,7 @@
 
 @mixin container-styles($max-width: 100%) {
     max-width: $max-width;
-    padding: 0 1.5rem;
+    padding: 0 spacing(6);
     width: 100%;
 
     @include breakpoint("md") {
@@ -64,3 +64,16 @@
     font-size: $size + px;
     font-size: ($size / $base) * 1rem;
 }
+
+@mixin grid-layout {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  
+    @include breakpoint('md') {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    @include breakpoint('lg') {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }

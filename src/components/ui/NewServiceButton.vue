@@ -17,11 +17,12 @@ button {
   border: none;
   border-radius: $border-radius-rounded-button;
   color: $text-color-reversed;
-  column-gap: spacing(2);
   cursor: pointer;
   display: inline-flex;
   font-weight: $font-weight-semibold;
+  gap: spacing(2);
   justify-content: center;
   padding: spacing(3) spacing(6) spacing(3) spacing(4);
+  white-space: nowrap;
 }
 </style>

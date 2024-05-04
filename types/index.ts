@@ -1,5 +1,16 @@
 import { z } from 'zod'
 
+export enum ServiceStatusEnum {
+  Published = 'published',
+  InProgress = 'inprogress',
+  Unpublished = 'unpublished'
+}
+
+export enum ServiceTypeEnum {
+  Http = 'http',
+  Rest = 'rest',
+}
+
 export const DeveloperSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -26,8 +37,8 @@ export const ServiceSchema = z.object({
   id: z.string(),
   name: z.string(),
   description: z.string(),
-  type: z.string(),
-  published: z.boolean(),
+  type: z.nativeEnum(ServiceTypeEnum),
+  published: z.nativeEnum(ServiceStatusEnum),
   configured: z.boolean(),
   versions: z.array(ServiceVersionSchema),
   metrics: ServiceMetricsSchema.optional(),

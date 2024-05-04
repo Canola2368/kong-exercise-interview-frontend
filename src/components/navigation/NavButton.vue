@@ -21,9 +21,9 @@ a {
   align-items: center;
   background-color: transparent;
   color: $text-color-reversed;
-  column-gap: spacing(3);
   display: flex;
   font-size: $font-size-sm;
+  gap: spacing(3);
   opacity: 0.8;
   padding: spacing(3) spacing(2);
   text-decoration: none;

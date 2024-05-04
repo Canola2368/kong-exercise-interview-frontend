@@ -1,5 +1,5 @@
 <template>
-  <section class="container-centered">
+  <div class="container-centered">
     <header>
       <div>
         <h1>Service Hub</h1>
@@ -13,30 +13,17 @@
         <NewServiceButton />
       </aside>
     </header>
-
-    <!-- todo: add component for list render and single article -->
-    <span v-if="loading">LOADINGGGGGGGGGGGGGGG</span>
-
-    <!-- todo add redering modes for exceptions -->
-    <ul v-if="filteredServices.length > 0 && !loading && !error">
-      <li
-        v-for="service in filteredServices"
-        :key="service.id"
-        class="service"
-      >
-        <div>
-          <p>{{ service.name }}</p>
-          <p>{{ service.description }}</p>
-        </div>
-      </li>
-    </ul>
-    <div
-      v-else
-      data-testid="no-results"
-    >
-      No services
+    <div v-if="loading">
+      <ServiceLoading />
+      <ServiceLoading />
+      <ServiceLoading />
     </div>
-  </section>
+    <ServiceList
+      v-else
+      :error="error"
+      :filtered-services="filteredServices"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -44,6 +31,8 @@ import { ref, watch } from 'vue'
 import useFilteredServices from '@/composables/useFilteredServices'
 import NewServiceButton from '../ui/NewServiceButton.vue'
 import ServiceInput from '../ui/ServiceInput.vue'
+import ServiceLoading from '../ui/ServiceLoading.vue'
+import ServiceList from './ServiceList.vue'
 
 // Initialize the searchQuery ref
 const searchQuery = ref('')
@@ -59,8 +48,14 @@ watch(filteredServices, () => { console.log('filtered services: ', filteredServi
 </script>
 
 <style lang="scss" scoped>
-section {
+div.container-centered {
   margin-top: spacing(30);
+
+  >div {
+    column-gap: spacing(6);
+    display: grid;
+    @include grid-layout;
+  }
 
   @include breakpoint('lg') {
     margin-top: spacing(13);
@@ -71,17 +66,18 @@ header {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  row-gap: spacing(6);
+  gap: spacing(6);
 
   @include breakpoint('lg') {
     flex-direction: row;
+    gap: spacing(10);
     justify-content: space-between;
   }
 
   >div {
     display: flex;
     flex-direction: column;
-    row-gap: spacing(4);
+    gap: spacing(4);
 
     h1 {
       color: $heading-color;
@@ -110,23 +106,23 @@ header {
 
   >aside {
     align-items: center;
-    column-gap: spacing(6);
     display: flex;
-  }
-}
+    flex-direction: column;
+    gap: spacing(6);
+    width: 100%;
 
-ul {
-  background-color: red;
-  display: grid;
-  grid-gap: spacing(10);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding: spacing(0);
-  width: 100%;
+    >* {
+      width: 100%
+    }
 
-  li {
-    background-color: aqua;
-    list-style-type: none;
-    padding: spacing(3);
+    @include breakpoint('lg') {
+      flex-direction: row;
+      width: auto;
+
+      >* {
+        width: auto
+      }
+    }
   }
 }
 </style>
