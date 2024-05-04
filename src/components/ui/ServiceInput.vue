@@ -28,7 +28,7 @@ div {
         align-items: center;
         bottom: 0;
         color: $input-placeholder-color;
-        display: flex;
+        display: inline-flex;
         left: 0;
         padding-left: spacing(3);
         pointer-events: none;

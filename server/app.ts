@@ -1,10 +1,11 @@
 import type { Request, Response } from 'express'
 import express from 'express'
 import bodyParser from 'body-parser'
-import type { DataResponse, Service } from './data'
+import { ServiceSchema, type DataResponse, type Service } from '../types'
 import response from './data'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import { z } from 'zod'
 
 const app = express()
 dotenv.config()
@@ -41,7 +42,12 @@ app.route('/api/:entity').get((req: Request, res: Response) => {
       }
       return false
     })
-    return res.status(200).send(filteredData)
+    const validationResult = z.array(ServiceSchema).safeParse(filteredData)
+    if (!validationResult.success) {
+      return res.status(500).send('Internal Server Error')
+    }
+
+    return res.status(200).send(validationResult.data)
   } catch (err) {
     console.error(err)
     return res.status(500).send('Internal Server Error')
