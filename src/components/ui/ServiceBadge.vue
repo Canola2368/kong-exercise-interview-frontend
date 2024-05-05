@@ -1,25 +1,28 @@
 <template>
-  <span
-    :class="visibilityHiddenClass"
+  <a
+    :class="computedValues.hidden"
+    :href="computedValues.href"
   >
     {{ length }} versions
-  </span>
+  </a>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
 
 const props = defineProps<{
+  id: string
   length: number
 }>()
 
-const visibilityHiddenClass = computed(() => ({
+const computedValues = computed(() => ({
   hidden: props.length === 0,
+  href: props.length === 0 ? undefined : `/services/${props.id}`,
 }))
 </script>
 
 <style lang="scss" scoped>
-span {
+a {
   background-color: $palette-blue-100;
   border-radius: $border-radius-rounded-button;
   color: $palette-blue-300;
@@ -28,6 +31,7 @@ span {
   padding: spacing(2) spacing(4);
   white-space: nowrap;
   width: fit-content;
+  text-decoration: none;
 
   &.hidden {
     visibility: hidden;

@@ -1,4 +1,5 @@
 <template>
+  <router-view />
   <NavigationBar />
   <!-- todo: add auto expand main content -->
   <main class="container-centered">

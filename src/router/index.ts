@@ -7,6 +7,13 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/PageHome.vue'),
+      children: [
+        {
+          path: '/services/:serviceId',
+          name: 'serviceId',
+          component: () => import('../views/PageServiceDetails.vue'),
+        },
+      ],
     },
   ],
 })

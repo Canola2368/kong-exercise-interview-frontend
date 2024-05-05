@@ -1,7 +1,10 @@
 <template>
   <header>
     <ServiceStatus :status="service.published" />
-    <ServiceBadge :length="service.versions.length" />
+    <ServiceBadge
+      :id="service.id"
+      :length="service.versions.length"
+    />
   </header>
   <div>
     <h3>{{ service.name }}</h3>

@@ -1,7 +1,6 @@
 import app from './app'
 import dotenv from 'dotenv'
 
-// Port will be proxied in the vite.config.ts
 dotenv.config()
 
 app.listen(process.env.DEFAULT_PORT, () => {
