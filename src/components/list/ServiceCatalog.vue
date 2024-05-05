@@ -9,7 +9,7 @@
       <aside>
         <ServiceInput
           v-model="searchQuery"
-          @update-query="debouncedSearch(searchQuery, searchQuery.length)"
+          @update-query="handleInputChange(searchQuery)"
         />
         <NewServiceButton />
       </aside>
@@ -17,6 +17,7 @@
     <div
       v-if="loading"
       class="loading"
+      data-testid="loading"
     >
       <template
         v-for="n in 9"
@@ -47,9 +48,14 @@ const searchQuery = ref('')
 
 const { filteredServices, loading, error, filterServices } = useFilteredServices()
 
-function debouncedSearch(v: string, length: number) {
-  const debouncedFilterServices = useDebounce(filterServices, length > 0 ? 2000 : 0)
-  debouncedFilterServices(v)
+const debouncedSearch = useDebounce((v: string) => {
+  if (v.trim() !== '') {
+    filterServices(v)
+  }
+}, 2000)
+
+function handleInputChange(value: string) {
+  debouncedSearch(value)
 }
 </script>
 

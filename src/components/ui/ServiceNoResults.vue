@@ -1,5 +1,5 @@
 <template>
-  <span>No results found.</span>
+  <span data-testid="no-results">No results found.</span>
 </template>
 
 <style scoped lang="scss">

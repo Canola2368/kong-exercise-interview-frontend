@@ -1,5 +1,8 @@
 <template>
-  <a :href="link">
+  <a
+    :data-testid="name"
+    :href="link"
+  >
     <div>
       <img
         alt="logo"

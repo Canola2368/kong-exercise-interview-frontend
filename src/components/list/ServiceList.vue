@@ -1,5 +1,8 @@
 <template>
-  <section v-if="!error">
+  <section
+    v-if="!error"
+    data-testid="no-errors"
+  >
     <div v-if="paginatedServices.length > 0">
       <ul>
         <li
@@ -20,6 +23,7 @@
   </section>
   <ServiceError
     v-else
+    data-testid="valid-error"
     :error="error"
   />
 </template>

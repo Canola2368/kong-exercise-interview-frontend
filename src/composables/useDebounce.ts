@@ -1,12 +1,13 @@
-export default function useDebounce(func: (...args: any[]) => void, timeout = 300) {
-  let timer: NodeJS.Timeout | null = null
+export default function useDebounce<T extends (...args: any[]) => void>(
+  func: T,
+  wait = 300,
+) {
+  let timer: ReturnType<typeof setTimeout> | null = null
 
-  const debouncedFunction = (...args: any[]) => {
-    clearTimeout(timer as NodeJS.Timeout)
+  return (...args: Parameters<T>) => {
+    clearTimeout(timer as ReturnType<typeof setTimeout>)
     timer = setTimeout(() => {
       func(...args)
-    }, timeout)
+    }, wait)
   }
-
-  return debouncedFunction
 }

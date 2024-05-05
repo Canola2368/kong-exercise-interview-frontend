@@ -1,5 +1,8 @@
 <template>
-  <button @click="$emit('isOpenChange')">
+  <button
+    data-testid="mobile-open-menu"
+    @click="$emit('isOpenChange')"
+  >
     <span v-if="isOpen">
       <CloseIcon />
     </span>

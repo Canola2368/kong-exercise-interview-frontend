@@ -3,10 +3,11 @@
     <section
       v-if="show"
       class="mask"
+      datatest-id="service-modal"
       @click.self="$emit('close')"
     >
       <div class="container">
-        <header>
+        <header data-testid="versions-title">
           Versions ({{ versions.length }})
         </header>
         <div class="body">
@@ -61,7 +62,7 @@ defineEmits(['close'])
   padding: spacing(0) spacing(6);
   position: fixed;
   top: spacing(0);
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
   width: 100%;
   z-index: 99;
 
@@ -77,7 +78,7 @@ defineEmits(['close'])
     max-width: convert-to-rem(830);
     overflow-y: auto;
     padding: spacing(8);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.15s ease-in-out;
 
     header {
       color: $modal-header-heading-color;

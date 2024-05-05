@@ -1,6 +1,7 @@
 <template>
   <button
     :class="computedClasses"
+    data-testid="versions-badge"
     @click="showModal = true"
   >
     {{ versions.length }} versions

@@ -1,5 +1,8 @@
 <template>
-  <a :href="link">
+  <a
+    :data-testid="label"
+    :href="link"
+  >
     <div>
       <slot name="icon" />
     </div>
