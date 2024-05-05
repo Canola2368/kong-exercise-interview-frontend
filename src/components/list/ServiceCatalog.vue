@@ -7,16 +7,23 @@
       </div>
 
       <aside>
-        <form @submit.prevent="handleSubmit">
-          <ServiceInput v-model="searchQuery" />
-        </form>
+        <ServiceInput
+          v-model="searchQuery"
+          @update-query="debouncedSearch(searchQuery, searchQuery.length)"
+        />
         <NewServiceButton />
       </aside>
     </header>
-    <div v-if="loading">
-      <ServiceLoading />
-      <ServiceLoading />
-      <ServiceLoading />
+    <div
+      v-if="loading"
+      class="loading"
+    >
+      <template
+        v-for="n in 9"
+        :key="n"
+      >
+        <ServiceLoading />
+      </template>
     </div>
     <ServiceList
       v-else
@@ -27,39 +34,37 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import useFilteredServices from '@/composables/useFilteredServices'
 import NewServiceButton from '../ui/NewServiceButton.vue'
 import ServiceInput from '../ui/ServiceInput.vue'
 import ServiceLoading from '../ui/ServiceLoading.vue'
 import ServiceList from './ServiceList.vue'
+import useDebounce from '@/composables/useDebounce'
 
 // Initialize the searchQuery ref
 const searchQuery = ref('')
 
 const { filteredServices, loading, error, filterServices } = useFilteredServices()
 
-// sanitize input ?
-const handleSubmit = async () => {
-  await filterServices(searchQuery.value)
+function debouncedSearch(v: string, length: number) {
+  const debouncedFilterServices = useDebounce(filterServices, length > 0 ? 2000 : 0)
+  debouncedFilterServices(v)
 }
-
-watch(filteredServices, () => { console.log('filtered services: ', filteredServices.value) })
 </script>
 
 <style lang="scss" scoped>
 div.main {
   margin-top: spacing(30);
 
-  >div {
-    column-gap: spacing(6);
-    display: grid;
-    @include grid-layout;
-  }
-
   @include breakpoint('lg') {
     margin-top: spacing(13);
   }
+}
+
+div.loading {
+  @include grid-layout();
+  column-gap: spacing(6);
 }
 
 header {

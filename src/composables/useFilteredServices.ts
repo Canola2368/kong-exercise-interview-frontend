@@ -30,6 +30,7 @@ export default function useFilteredServices() {
       } else {
         console.error('Error setting up the request', axiosError.message)
       }
+      error = `Axios error occurred: ${error.message}`
     } else {
       console.error('Non-Axios error occurred', error.message)
       error.value = `Non-Axios error occurred: ${error.message}`

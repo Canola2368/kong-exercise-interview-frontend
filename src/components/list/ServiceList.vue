@@ -13,14 +13,16 @@
       No services
     </div>
   </section>
-  <div v-else>
-    Error : {{ error }}
-  </div>
+  <ServiceError
+    v-else
+    :error="error"
+  />
 </template>
 
 <script setup lang="ts">
 import type { Service } from 'types'
 import ServiceArticle from './ServiceArticle.vue'
+import ServiceError from '../ui/ServiceError.vue'
 
 defineProps<{
   filteredServices: Service[]

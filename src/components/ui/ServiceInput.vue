@@ -12,11 +12,13 @@
       data-testid="search-input"
       placeholder="Search services"
       type="search"
+      @input="$emit('updateQuery')"
     >
   </div>
 </template>
 
 <script setup lang="ts">
+defineEmits(['updateQuery'])
 const searchQuery = defineModel<string>()
 </script>
 

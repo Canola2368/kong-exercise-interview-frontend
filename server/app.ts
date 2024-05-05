@@ -42,7 +42,9 @@ app.route('/api/:entity').get((req: Request, res: Response) => {
       }
       return false
     })
+
     const validationResult = z.array(ServiceSchema).safeParse(filteredData)
+
     if (!validationResult.success) {
       return res.status(500).send('Internal Server Error')
     }

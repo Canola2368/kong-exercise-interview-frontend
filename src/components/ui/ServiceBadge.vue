@@ -1,7 +1,7 @@
 <template>
   <a
-    :class="computedValues.hidden"
-    :href="computedValues.href"
+    :class="computedClasses"
+    :href="computedHref.href"
   >
     {{ length }} versions
   </a>
@@ -15,10 +15,14 @@ const props = defineProps<{
   length: number
 }>()
 
-const computedValues = computed(() => ({
-  hidden: props.length === 0,
+const computedHref = computed(() => ({
   href: props.length === 0 ? undefined : `/services/${props.id}`,
 }))
+
+const computedClasses = computed(() => ({
+  hidden: props.length === 0,
+}))
+
 </script>
 
 <style lang="scss" scoped>
