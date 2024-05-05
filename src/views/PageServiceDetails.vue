@@ -14,11 +14,11 @@ export default defineComponent({
 
 <style scoped>
 .modal {
-  position: fixed;
-  z-index: 999;
-  top: 20%;
   left: 50%;
-  width: 300px;
   margin-left: -150px;
+  position: fixed;
+  top: 20%;
+  width: 300px;
+  z-index: 999;
 }
 </style>

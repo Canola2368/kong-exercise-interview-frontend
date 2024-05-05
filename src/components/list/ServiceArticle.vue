@@ -6,7 +6,7 @@
       :length="service.versions.length"
     />
   </header>
-  <div>
+  <div class="details">
     <h3>{{ service.name }}</h3>
     <p>{{ service.description }}</p>
   </div>
@@ -16,19 +16,39 @@
       :metrics="service.metrics"
     />
     <ServiceSingleDataUnconfigured v-else />
+    <ServiceAvatar :developers="uniqueDevelopers" />
   </footer>
 </template>
 
 <script setup lang="ts">
-import type { Service } from 'types'
+import { computed } from 'vue'
+import type { Developer, Service } from 'types'
 import ServiceStatus from '../ui/ServiceStatus.vue'
 import ServiceBadge from '../ui/ServiceBadge.vue'
 import ServiceData from '../ui/ServiceData.vue'
 import ServiceSingleDataUnconfigured from '../ui/ServiceSingleDataUnconfigured.vue'
+import ServiceAvatar from '../ui/ServiceAvatar.vue'
 
-defineProps<{
+const props = defineProps<{
   service: Service
 }>()
+
+const uniqueDevelopers = computed(() => {
+  const uniqueIds = new Set<string>()
+  const uniqueDeveloperArray: Developer[] = []
+
+  props.service.versions.forEach(version => {
+    if (version.developer) {
+      const { id, name, email, avatar } = version.developer
+      if (!uniqueIds.has(id)) {
+        uniqueIds.add(id)
+        uniqueDeveloperArray.push({ id, name, email, avatar })
+      }
+    }
+  })
+
+  return uniqueDeveloperArray
+})
 </script>
 
 <style scoped lang="scss">
@@ -43,6 +63,10 @@ header {
 }
 
 footer {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+
   margin-top: auto;
 
   >span {
@@ -52,7 +76,7 @@ footer {
   }
 }
 
-div {
+div.details {
   margin-bottom: spacing(4);
   margin-top: spacing(2.5);
 

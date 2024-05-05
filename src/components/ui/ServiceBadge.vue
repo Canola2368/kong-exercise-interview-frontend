@@ -33,9 +33,9 @@ a {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   padding: spacing(2) spacing(4);
+  text-decoration: none;
   white-space: nowrap;
   width: fit-content;
-  text-decoration: none;
 
   &.hidden {
     visibility: hidden;

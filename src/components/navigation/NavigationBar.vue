@@ -12,7 +12,7 @@
       <div class="mobile-hidden">
         <NavButton
           label="organization"
-          link="/"
+          link="/organization"
         >
           <template #icon>
             <img
@@ -23,7 +23,7 @@
         </NavButton>
         <NavButton
           label="settings"
-          link="/"
+          link="/settings"
         >
           <template #icon>
             <img
@@ -33,7 +33,7 @@
           </template>
         </NavButton>
         <AccountButton
-          link="/"
+          link="/account"
           name="katherine ellis"
         />
       </div>
@@ -51,7 +51,7 @@
       <li>
         <NavButton
           label="organization"
-          link="/"
+          link="/organization"
         >
           <template #icon>
             <img
@@ -64,7 +64,7 @@
       <li>
         <NavButton
           label="settings"
-          link="/"
+          link="/settings"
         >
           <template #icon>
             <img
@@ -76,7 +76,7 @@
       </li>
       <li>
         <AccountButton
-          link="/"
+          link="/account"
           name="katherine ellis"
         />
       </li>

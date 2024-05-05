@@ -1,17 +1,22 @@
 <template>
   <section v-if="!error">
-    <ul v-if="filteredServices.length > 0">
-      <li
-        v-for="service in filteredServices"
-        :key="service.id"
-        class="service"
-      >
-        <ServiceArticle :service="service" />
-      </li>
-    </ul>
-    <div v-else>
-      No services
+    <div v-if="paginatedServices.length > 0">
+      <ul>
+        <li
+          v-for="service in paginatedServices"
+          :key="service.id"
+          class="service"
+        >
+          <ServiceArticle :service="service" />
+        </li>
+      </ul>
+      <ServicePagination
+        :paginated-services="paginatedServices"
+        :pagination="pagination"
+        :total="filteredServices.length"
+      />
     </div>
+    <ServiceNoResults v-else />
   </section>
   <ServiceError
     v-else
@@ -23,18 +28,33 @@
 import type { Service } from 'types'
 import ServiceArticle from './ServiceArticle.vue'
 import ServiceError from '../ui/ServiceError.vue'
+import ServiceNoResults from '../ui/ServiceNoResults.vue'
+import { ref, computed } from 'vue'
+import usePagination from '../../composables/usePagination'
+import ServicePagination from './ServicePagination.vue'
 
-defineProps<{
-  filteredServices: Service[]
-  error: string | null
+const props = defineProps<{
+  filteredServices: Service[];
+  error: string | null;
 }>()
+
+const currentPage = ref(1)
+const itemsPerPage = 9
+
+const pagination = usePagination(props.filteredServices.length, { currentPage: currentPage.value, itemsPerPage })
+
+const paginatedServices = computed(() => {
+  const startIndex = pagination.startIndex.value
+  const endIndex = pagination.endIndex.value
+  return props.filteredServices.slice(startIndex, endIndex)
+})
 </script>
 
 <style lang="scss" scoped>
 section {
-  margin-top: spacing(6);
+  margin: spacing(6) spacing(0);
 
-  ul {
+  div>ul {
     gap: spacing(10);
     padding: spacing(0);
     width: 100%;

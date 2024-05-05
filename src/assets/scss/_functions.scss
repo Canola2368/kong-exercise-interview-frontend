@@ -5,7 +5,7 @@
 
 $spacing-sizes: ();
 
-@for $i from 0 through 64 {
+@for $i from -8 through 64 {
     $value: $initial-spacing-size + ($i * math.div($spacing-increment, 2));
     $key: math.div($i, 2);
 
@@ -20,5 +20,3 @@ $spacing-sizes: ();
 @function spacing($key) {
     @return map.get($spacing-sizes, $key);
 }
-
-// @debug $spacing-sizes;

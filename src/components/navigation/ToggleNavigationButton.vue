@@ -26,6 +26,7 @@ button {
   border: 1px solid $navigation-mobile-button-background;
   border-radius: $border-radius-sm;
   color: $text-color-reversed;
+  cursor: pointer;
   display: inline-flex;
   justify-content: center;
   margin: spacing(3) spacing(0);

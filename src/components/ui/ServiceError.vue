@@ -21,21 +21,21 @@ span:has(svg) {
 }
 
 div {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 100%;
+    background-color: $error-lightest-background;
     border: 1px solid $error-color;
     border-radius: $border-radius-base;
-    background-color: $error-lightest-background;
+    display: flex;
+    flex-direction: column;
+    gap: spacing(2);
+    justify-content: center;
     margin-top: spacing(6);
     padding: spacing(6);
-    gap: spacing(2);
+    width: 100%;
 
     figure {
-        display: inline-flex;
         align-items: center;
+        display: inline-flex;
         gap: spacing(2);
 
         figcaption {
@@ -45,11 +45,11 @@ div {
     }
 
     kbd {
-        padding: spacing(1) spacing(2);
-        margin-left: spacing(2);
+        background-color: $error-light-background;
         border: 1px solid $error-color;
         border-radius: $border-radius-base;
-        background-color: $error-light-background;
+        margin-left: spacing(2);
+        padding: spacing(1) spacing(2);
     }
 }
 </style>

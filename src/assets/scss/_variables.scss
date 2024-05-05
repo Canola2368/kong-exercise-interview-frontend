@@ -25,6 +25,11 @@ $white-background-color: #ffffff;
 
 $skeleton-background-color: #eaeaef;
 
+$icon-background-color: #f1f1f8;
+$icon-black-100-background-color: #0000001a;
+$icon-black-text-color: #00000040;
+$icon-text-color: #777d8a;
+
 $error-light-background: #fee6e5;
 $error-lightest-background: #fef2f2;
 $error-dark-foreground: #d92537;
@@ -33,6 +38,7 @@ $error-darkest-foreground: #83182c;
 $success-color: #42d782;
 $warning-color: #fabe5f;
 $error-color: #dc3545;
+
 $inactive-color: #adb6c8;
 $disabled-color: #b6b6bd;
 
@@ -43,6 +49,7 @@ $navigation-mobile-button-background: #072863;
 
 $palette-blue-100: #f2f6fe;
 $palette-blue-200: #bdd3f9;
+$palette-blue-250: #a6c6ff;
 $palette-blue-300: #5888db;
 $palette-blue-500: #1456cb;
 $palette-blue-600: #1155cb;
@@ -89,6 +96,7 @@ $icon-size-mini: 0.375rem;
 $icon-size-xs: 1.25rem;
 $icon-size-sm: 1.5rem;
 $icon-size-base: 1.875rem;
+$icon-size-lg: 2.25rem;
 
 $initial-spacing-size: 0rem;
 $spacing-increment: 0.25rem;

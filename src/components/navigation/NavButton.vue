@@ -35,7 +35,10 @@ a {
   }
 
   div {
+    align-items: center;
+    display: inline-flex;
     height: $icon-size-sm;
+    justify-content: center;
     width: $icon-size-sm;
   }
 

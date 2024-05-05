@@ -15,6 +15,21 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: '/organization',
+      name: 'organization',
+      component: () => import('../views/PageOrganization.vue'),
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('../views/PageSettings.vue'),
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: () => import('../views/PageAccount.vue'),
+    },
   ],
 })
 
