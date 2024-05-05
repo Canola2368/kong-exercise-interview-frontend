@@ -35,6 +35,7 @@ section {
 
   span {
     border-radius: $border-radius-round;
+    height: $icon-size-lg;
     overflow: hidden;
     position: relative;
     width: $icon-size-lg;

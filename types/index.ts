@@ -29,6 +29,7 @@ export const ServiceVersionSchema = z.object({
   description: z.string(),
   developer: DeveloperSchema.optional(),
   updated_at: z.date(),
+  type: z.nativeEnum(ServiceTypeEnum),
 })
 
 export const ServiceMetricsSchema = z.object({

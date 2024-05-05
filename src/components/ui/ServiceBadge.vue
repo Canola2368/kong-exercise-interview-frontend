@@ -1,35 +1,45 @@
 <template>
-  <a
+  <button
     :class="computedClasses"
-    :href="computedHref.href"
+    @click="showModal = true"
   >
-    {{ length }} versions
-  </a>
+    {{ versions.length }} versions
+  </button>
+  <Teleport to="body">
+    <ServiceModal
+      :show="showModal"
+      :versions="versions"
+      @close="showModal = false"
+    />
+  </Teleport>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import ServiceModal from './ServiceModal.vue'
+import type { ServiceVersion } from 'types'
+
+const showModal = ref(false)
 
 const props = defineProps<{
   id: string
-  length: number
+  versions: ServiceVersion[]
 }>()
 
-const computedHref = computed(() => ({
-  href: props.length === 0 ? undefined : `/services/${props.id}`,
-}))
-
 const computedClasses = computed(() => ({
-  hidden: props.length === 0,
+  hidden: props.versions.length === 0,
 }))
 
 </script>
 
 <style lang="scss" scoped>
-a {
+button {
+  appearance: none;
   background-color: $palette-blue-100;
+  border: 1px solid $palette-blue-100;
   border-radius: $border-radius-rounded-button;
   color: $palette-blue-300;
+  cursor: pointer;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   padding: spacing(2) spacing(4);

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 
 const metricFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',

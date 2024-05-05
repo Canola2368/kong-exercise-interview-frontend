@@ -62,7 +62,15 @@ $breakpoints: (
   "xxl": $double-extra-large-screen
 );
 
-$font-size-2xs: 0.5rem;
+$modal-overlay-background-color: #0b172de6;
+$modal-container-box-shadow: 0px 4px 30px 0px #00000033;
+$modal-header-heading-color: #0b172d;
+$modal-body-version-color: #262626;
+$modal-body-text-color: #8a8a8a;
+$modal-separator-color: #f1f1f8;
+
+$font-size-3xs: 0.5rem;
+$font-size-2xs: 0.625rem;
 $font-size-xs: 0.75rem;
 $font-size-sm: 0.875rem;
 $font-size-base: 1rem;
@@ -84,12 +92,12 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 $border-radius-none: 0;
-$border-radius-xs: 2px;
-$border-radius-sm: 4px;
-$border-radius-base: 8px;
-$border-radius-lg: 12px;
-$border-radius-xl: 16px;
-$border-radius-rounded-button: 100px;
+$border-radius-xs: 0.125rem;
+$border-radius-sm: 0.25rem;
+$border-radius-base: 0.5rem;
+$border-radius-lg: 0.75rem;
+$border-radius-xl: 1rem;
+$border-radius-rounded-button: 6.25rem;
 $border-radius-round: 50%;
 
 $icon-size-mini: 0.375rem;

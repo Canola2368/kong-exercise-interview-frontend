@@ -3,7 +3,7 @@
     <ServiceStatus :status="service.published" />
     <ServiceBadge
       :id="service.id"
-      :length="service.versions.length"
+      :versions="service.versions"
     />
   </header>
   <div class="details">
@@ -66,7 +66,6 @@ footer {
   align-items: end;
   display: flex;
   justify-content: space-between;
-
   margin-top: auto;
 
   >span {
@@ -77,7 +76,7 @@ footer {
 }
 
 div.details {
-  margin-bottom: spacing(4);
+  margin-bottom: spacing(9);
   margin-top: spacing(2.5);
 
   h3 {

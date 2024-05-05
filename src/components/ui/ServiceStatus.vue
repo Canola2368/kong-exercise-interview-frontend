@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import { CheckIcon, ProgressIcon, CloseIcon } from '@kong/icons'
 import { ServiceStatusEnum } from '../../../types'
 

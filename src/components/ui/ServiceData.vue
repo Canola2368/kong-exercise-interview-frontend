@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import type { ServiceMetrics } from '../../../types'
 import ServiceSingleData from './ServiceSingleData.vue'
 

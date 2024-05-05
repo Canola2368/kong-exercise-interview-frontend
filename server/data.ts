@@ -46,6 +46,7 @@ const data = (): DataResponse => {
       return [...Array(versionCount).keys()].map(() => ({
         id: faker.string.uuid(),
         name: faker.system.semver(),
+        type: faker.helpers.enumValue(ServiceTypeEnum),
         description:
           Math.random() < 0.8
             ? faker.company.catchPhrase()

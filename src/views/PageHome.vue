@@ -20,3 +20,9 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+body:has(>section.mask) {
+  overflow: hidden;
+}
+</style>
