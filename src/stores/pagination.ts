@@ -23,7 +23,6 @@ export const usePaginationStore = defineStore({
     },
     setPageSize(size: number) {
       this.pageSize = size
-      // After changing page size, we reset to the first page
       this.currentPage = 1
     },
     setTotalItems(total: number) {

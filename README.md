@@ -67,6 +67,14 @@ When it's ready, please send your recruiter a link to the source code in a GitHu
 git clone git@github.com:Kong/konnect-team-interview-frontend-exercise.git
 ```
 
+### Env variables
+
+Copy the `.env.dist` for local development by running: 
+
+```sh
+cp  .env.dist .env
+```
+
 ### pnpm
 
 This repository uses [`pnpm`](https://pnpm.io) rather than `npm` or `yarn`. [See here for instructions on installing pnpm](https://pnpm.io/installation).
@@ -79,16 +87,10 @@ pnpm install
 
 ### Compile and Hot-Reload for Development
 
-Start the backend which serves the `services` API:
+You can now start both services by running :
 
 ```sh
-pnpm dev:server
-```
-
-In a separate terminal, start the Vue app:
-
-```sh
-pnpm dev:ui
+pnpm dev
 ```
 
 ## Searching the services endpoint
@@ -168,13 +170,7 @@ First, you'll need to build the app
 pnpm build
 ```
 
-Next, run the API server
-
-```sh
-pnpm dev:server
-```
-
-Now run the `preview` command
+You can now run the `preview` command (but don't forget to change your environments variables in your `.env` file first) :
 
 ```sh
 pnpm preview
@@ -197,3 +193,57 @@ pnpm commit
 ```
 
 This will trigger the Commitizen interactive prompt for building your commit message.
+
+## Submission recap
+
+Please consider this as a "report" for this submission for this exercise. I spent approximately 14 hours over the weekend the provided Figma with Vue 3. I apologise if this is beyond what you have anticipated for this project.
+
+Please see the following sections for a quick summary of all the changes I implemented.
+
+### API + Typescript
+
+The first thing I did was to provide some typings for the API mocks and return payloads. Having worked with Typescript for a while now (even if mostly on the frontend side), I have become quite acclimated to Typescript suggestions and validation in my IDE.
+
+I added basic types at first after a first read, and then added some Zod interfaces for some "security" (even if locally there was no reason to be worried thanks to faker) and to strengthen the types. I added enums and needed interfaces to be compliant with what was `faker` already doing.
+
+I also added some error codes and returns, `try` and `catch` around API interactions and calls, but basically changed nothing major about how the API was already working and returning data. Although it took me some time (and I wanted very much to tackle on the design as soon as I could), it definitely saved some time on the long run.
+
+On the frontend side, everything was started with Typescript and having the return types made on the API side definitely helped.
+
+### Design (Figma/CSS/SCSS)
+
+On the design side of this exercise, there are some key points about what has been done :
+
+- The Figma wasn't really "easy" to work with, but I've implemented the design as best as I could, filling up the blanks when needed (for bad spacing, alignments, etc) and completing things when needed. Please let me know if I did some major mistakes aside from the ones written in here, but the implemented design is pretty close to what's displayed on the Figma file.
+- I didn't had to install any librairies, except `@kong/icons` for the icons (and that's why they might differ from the icons already present on the provided Figma). I've seen the [`kongponents-alpha`](https://alpha--kongponents.netlify.app/) library and wanted to use it for the icons (which seems to match the icons used) and some components, but it seemed a bit over the top. I thought about installing third party librairies like `tailwind` to speed up the prototyping, but having SCSS already set up, I tried my best to make it work.
+
+Regarding the SCSS part of the implementation :
+
+- Despite the fact that I've not being coding in SCSS at all the past few years, I tried my best to split my files correctly and take advantage of the SCSS syntax (using `mixins`, `functions`, `@use`, etc.).
+- Even if I used a lot of variables and lots of nesting in my scoped styles, I didn't make the most use of SCSS (haven't had enough time sadly), as it is missing some `mixins` for recurrent classes like :
+
+```css
+align-items: center;
+display: flex;
+justify-content: center;
+```
+
+- To compensate for the spacing and font-sizes issues on the original Figma file, I've added several functions and variables to correct them.
+
+### Advanced functionalities
+
+- Teleport & Routing : I failed to implement the modal opening on a certain route without reloading the page. Then I decided to do a simple Modal component based on official Vue examples and using Teleport to add it to the `body`. It shares similarities to React portals and it has been working flawlessly
+Note: it was written earlier in the `README` that clicking on a a service should open the modal, but the Figma prototype wasn't showing the modal on a service click, but on the "versions" button click, so I favored the Figma design in this case. 
+
+- Pagination : I think it could have done with Pinia, but I encountered some difficulties getting getters communicating with properties and othe getters simutanously, so I did a simple composable instead. It allowed me to do a reusable client side pagination.
+I also did a few composables for filtering, debouncing and data fetching.
+
+### Misc
+
+- Changed some scripts for better developer experience in the `package.json` and modified this README when needed.
+- Added environment variables for front and API URLs and solved some CORS errors.
+- Testing : I didn't have enough time to introduce some specs for the few interactions implemented. I did a few for interesting interactions (like testing the modal itself, for example), but I wanted to have a solid base for design even if it meant not writing as much tests.
+
+### Conclusion
+
+Overall, it was a very fun project and it has been a blast discovering Vue 3 and using SCSS again. Thanks for reading all the way to the end.

@@ -49,9 +49,7 @@ const searchQuery = ref('')
 const { filteredServices, loading, error, filterServices } = useFilteredServices()
 
 const debouncedSearch = useDebounce((v: string) => {
-  if (v.trim() !== '') {
-    filterServices(v)
-  }
+  filterServices(v)
 }, 2000)
 
 function handleInputChange(value: string) {
